@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.env
+.env.*
+.venv/
+.vscode/
+.idea/
+*.pdf
+*.txt
+*.json
+streamlit/
