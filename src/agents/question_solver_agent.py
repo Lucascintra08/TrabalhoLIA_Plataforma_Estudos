@@ -36,34 +36,77 @@ def resolver_questao(
     adaptando a explicação ao nível e à matéria.
     """
     prompt = f"""
-Você é um professor de {materia or "matérias do ensino médio"} para alunos de {nivel}.
+Você é um professor especialista em {materia or "disciplinas do ensino médio"}
+e seu objetivo é ENSINAR e não apenas dar a resposta.
 
-Enunciado da questão:
+Você deve corrigir a seguinte questão:
+
+📘 **Enunciado da questão:**
 \"\"\"{enunciado}\"\"\"
 
 
-Alternativas (se houver):
-\"\"\"{alternativas or "Não há alternativas, é questão dissertativa."}\"\"\"
+📑 **Alternativas (se houver):**
+\"\"\"{alternativas or "Questão dissertativa — não há alternativas."}\"\"\"
 
+📌 **Resposta marcada pelo aluno (se houver):** {resposta_aluno or "não informada"}
+📚 **Matéria/Tema:** {materia or "não informado"}
+🎓 **Nível do aluno:** {nivel or "ensino médio"}
 
-Resposta marcada pelo aluno (se informada): {resposta_aluno or "não informada"}
-Matéria/tema (se informado): {materia or "não informado"}
+---
 
-Tarefas:
-1. Diga claramente qual é a resposta correta (letra ou texto).
-2. Explique passo a passo o raciocínio em linguagem adequada a {nivel}.
-3. Justifique por que as alternativas erradas estão erradas (se existirem).
-4. Dê uma dica de memorização ou macete em 1–2 frases.
-5. Sugira uma tag de assunto (ex: "Funções do 1º grau",
-   "Revolução Francesa", "Citologia", "Óptica geométrica", etc.)
+## 🧠 Tarefas:
 
-Formate a resposta em markdown com as seções:
+**1. Gabarito**
+- Diga qual é a resposta correta (letra ou texto).
+- Seja direto, sem justificativas aqui.
 
-- **Gabarito**
-- **Raciocínio comentado**
-- **Análise das alternativas**
-- **Dica de memorização**
-- **Assunto / Tag**
+**2. Raciocínio guiado**
+Explique o passo a passo como para um aluno:
+- Defina os conceitos envolvidos.
+- Mostre o caminho lógico da solução.
+- Evite saltos matemáticos impossíveis.
+- Não use linguagem excessivamente técnica.
+
+**3. Análise pedagógica das alternativas**
+Para cada alternativa:
+- Explique *por que está errada*.
+- Aponte *error comum de aluno* ao escolher aquela alternativa.
+- Exemplos:
+  - erro de sinal
+  - confusão de fórmulas
+  - interpretação errada
+
+**4. Macete / Dica de memorização**
+- 1–2 frases curtas
+- objetivo: lembrar no momento da prova
+
+**5. Assunto / TAG**
+- 1 tag curta (1–3 palavras)
+- exemplos: “Funções”, “Óptica”, “Citologia”, “Derivadas”
+- sem frases longas, sem hashtags
+
+---
+
+## 📦 FORMATO FINAL (obrigatório)
+
+### **Gabarito**
+⚠️ Resposta correta: **...**
+
+### **Raciocínio comentado**
+Texto passo a passo
+
+### **Análise das alternativas**
+- A) ...
+- B) ...
+- C) ...
+- D) ...
+
+### **Dica de memorização**
+...
+
+### **Assunto / Tag**
+...
+
 """
     texto = chat_gemini(prompt)
 

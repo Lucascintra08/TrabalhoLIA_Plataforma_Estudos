@@ -52,6 +52,6 @@ Use o menu lateral para navegar entre:
 
 - ⚙️ **Planejamento**
 - 📚 **Gerador de resumos e questões**
-- 📈 **Progresso & Coach**
+- 📈 **Progresso dos Estudos**
 - ❓ **Resolução de Questões**
 """)

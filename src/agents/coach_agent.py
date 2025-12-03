@@ -23,7 +23,9 @@ def sugerir_plano_diario(
     config: StudyConfig,
     progresso: Progresso,
     questoes_resolvidas: list[SolvedQuestion],
-) -> str:
+    tags: dict[str, int] | None = None,
+):
+
     # só mandamos um "resumo" para o modelo para não ficar gigante
     questoes_resumidas = [
         {"timestamp": str(q.timestamp), "enunciado": q.enunciado[:200]}
